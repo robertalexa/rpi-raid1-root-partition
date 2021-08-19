@@ -103,6 +103,7 @@ sudo nano /media/raid/etc/fstab
 /dev/md0 / ext4 defaults,noatime,errors=remount-ro 0 1
 ```
 23. `sudo reboot`
-24. OPTIONAL but recommended step. Power off your RPi, plug your MicroSD into your laptop and delete the old `/root` partition.
+24. `sudo rm -rf /media/raid`
+25. OPTIONAL but recommended step. Power off your RPi, plug your MicroSD into your laptop and delete the old `/root` partition.
 
 ## Enjoy!
