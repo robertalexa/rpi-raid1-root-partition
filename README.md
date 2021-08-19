@@ -84,12 +84,14 @@ initramfs initrd.img-5.10.52-v8+ followkernel
 ```
 Check your version of the kernel in `/boot`. In my case it was called `kernel8.img`
 For initramds use the version from the output at step 16.
+
 18. `sudo reboot`
 19. Edit boot cmdline
 ```
 sudo nano /boot/cmdline.txt
 ```
 Change `root` to `/dev/md0` and add `rootdelay=5` at the end of the line. If you notice that the array is not assembled at boot time, increase the number as needed e.g. `rootdelay=10`
+
 20. Mount the array to the temporary location again
 ```
 sudo mount /dev/md0 /media/raid
