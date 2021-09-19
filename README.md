@@ -52,6 +52,10 @@ sudo mkfs.ext4 /dev/md0
 sudo mkdir /media/raid
 sudo chown pi:pi /media/raid
 sudo mount /dev/md0 /media/raid
+
+sudo mkdir -p /mnt/sdrootfs
+sudo mount /dev/mmcblk0p2 /mnt/sdrootfs
+sudo rsync -axv /mnt/sdrootfs/* /media/raid
 ```
 13. Get RAID info
 ```
@@ -61,7 +65,7 @@ sudo mdadm --detail --scan
 ```
 sudo nano /etc/mdadm/mdadm.conf
 ```
-15. Add modules to bootleader 
+15. Add modules to bootloader 
 ```
 sudo nano /etc/initramfs-tools/modules
 ```
@@ -109,3 +113,8 @@ sudo nano /media/raid/etc/fstab
 25. OPTIONAL but recommended step. Power off your RPi, plug your MicroSD into your laptop and delete the old `/root` partition.
 
 ## Enjoy!
+
+## Source
+https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=314453&p=1881821&hilit=raid+1+root
+https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=306729&p=1834954&hilit=raid+1+root
+https://jlamoure.net/blog/raspberry-pi-raid-1/
