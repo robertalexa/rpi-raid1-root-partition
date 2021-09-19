@@ -46,8 +46,7 @@ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda1 /dev
 ```
 sudo mkfs.ext4 /dev/md0
 ```
-12. Copy the array information into mdadm.conf
-12. Mount the array to a temporary location in order to copy the `/root` partition. Give the pi user permission
+12. Mount the array to a temporary location. Give the pi user permission. Mount `/root` and rsync it.
 ```
 sudo mkdir /media/raid
 sudo chown pi:pi /media/raid
