@@ -38,11 +38,11 @@ sudo mkfs.ext4 /dev/sdb1
 ```
 sudo apt install mdadm
 ```
-10. Create the RAID1 array - this will take some time, depending on the drives size.
+10. Create the RAID1 array.
 ```
 sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda1 /dev/sdb1
 ```
-11. Monitor the process
+11. Monitor the process - this will take some time, depending on the drives size. Wait until it completes and then proceed.
 ```
 watch -n 3 cat /proc/mdstat
 ```
