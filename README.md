@@ -19,7 +19,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
 ```
-7. Prepare your drives. If the drives you have come with a partition, it will be gone. Also, before you blindly copy and paste commands check where your drives are. If you are using the USB3.0 ports, the top one will be `sda` and the bottom will be `sdb`. Use `df -h` and `lsblk` to double check
+7. Prepare your drives. If the drives you have come with a partition, it will be gone. Also, before you blindly copy and paste commands check where your drives are. Use `df -h` and `lsblk` to double check
 ```
 sudo fdisk /dev/sda
 d - delete partition
@@ -115,5 +115,7 @@ sudo nano /media/raid/etc/fstab
 
 ## Source
 https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=314453&p=1881821&hilit=raid+1+root
+
 https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=306729&p=1834954&hilit=raid+1+root
+
 https://jlamoure.net/blog/raspberry-pi-raid-1/
