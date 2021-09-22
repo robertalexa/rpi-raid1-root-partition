@@ -58,9 +58,9 @@ sudo mount /dev/md0 /media/raid
 ```
 14. Mount `/root` and rsync it.
 ```
-sudo mkdir -p /mnt/sdrootfs
+sudo mkdir /mnt/sdrootfs
 sudo mount /dev/mmcblk0p2 /mnt/sdrootfs
-sudo rsync -axv /mnt/sdrootfs/* /media/raid
+sudo rsync -axv --progress /mnt/sdrootfs/* /media/raid
 ```
 15. Get RAID info
 ```
