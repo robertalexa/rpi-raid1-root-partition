@@ -50,25 +50,27 @@ watch -n 3 cat /proc/mdstat
 ```
 sudo mkfs.ext4 /dev/md0
 ```
-13. Mount the array to a temporary location. Give the pi user permission. Mount `/root` and rsync it.
+13. Mount the array to a temporary location. Give the pi user permission.
 ```
 sudo mkdir /media/raid
 sudo chown pi:pi /media/raid
 sudo mount /dev/md0 /media/raid
-
+```
+14. Mount `/root` and rsync it.
+```
 sudo mkdir -p /mnt/sdrootfs
 sudo mount /dev/mmcblk0p2 /mnt/sdrootfs
 sudo rsync -axv /mnt/sdrootfs/* /media/raid
 ```
-14. Get RAID info
+15. Get RAID info
 ```
 sudo mdadm --detail --scan
 ```
-15. Copy the exact output at the bottom of the config file
+16. Copy the exact output at the bottom of the config file
 ```
 sudo nano /etc/mdadm/mdadm.conf
 ```
-16. Add modules to bootloader 
+17. Add modules to bootloader 
 ```
 sudo nano /etc/initramfs-tools/modules
 ```
@@ -77,11 +79,11 @@ raid1
 md_mod
 ext4
 ```
-17. Update initramfs and make a note of the output. You will need this in the next step
+18. Update initramfs and make a note of the output. You will need this in the next step
 ```
 sudo update-initramfs -c -k `uname -r`
 ```
-18. Add information about the kernel and initramfs to the boot config
+19. Add information about the kernel and initramfs to the boot config
 ```
 sudo nano /boot/config.txt
 ```
@@ -92,28 +94,28 @@ initramfs initrd.img-5.10.52-v8+ followkernel
 Check your version of the kernel in `/boot`. In my case it was called `kernel8.img`
 For initramds use the version from the output at step 17.
 
-19. `sudo reboot`
-20. Edit boot cmdline
+20. `sudo reboot`
+21. Edit boot cmdline
 ```
 sudo nano /boot/cmdline.txt
 ```
 Change `root` to `/dev/md0` and add `rootdelay=5` at the end of the line. If you notice that the array is not assembled at boot time, increase the number as needed e.g. `rootdelay=10`
 
-21. Mount the array to the temporary location again
+22. Mount the array to the temporary location again
 ```
 sudo mount /dev/md0 /media/raid
 ```
-22. Edit the `fstab` file located on the array.
+23. Edit the `fstab` file located on the array.
 ```
 sudo nano /media/raid/etc/fstab
 ```
-23. Delete/comment out the old `/rootfs` partition line and replace with the array information
+24. Delete/comment out the old `/rootfs` partition line and replace with the array information
 ```
 /dev/md0 / ext4 defaults,noatime,errors=remount-ro 0 1
 ```
-24. `sudo reboot`
-25. `sudo rm -rf /media/raid`
-26. OPTIONAL but recommended step. Power off your RPi, plug your MicroSD into your laptop and delete the old `/root` partition.
+25. `sudo reboot`
+26. `sudo rm -rf /media/raid`
+27. OPTIONAL but recommended step. Power off your RPi, plug your MicroSD into your laptop and delete the old `/root` partition.
 
 ## Important
 ### Kernel Updates
