@@ -138,7 +138,9 @@ echo ============ UPDATE INITRAMFS ==============
 mkinitramfs -o /boot/initramfs-raid.gz $1
 echo ============ UPDATE COMPLETED ==============
 ```
-
+```
+sudo chmod 755 /etc/kernel/postinst.d/raid-update
+```
 
 ## Enjoy!
 
