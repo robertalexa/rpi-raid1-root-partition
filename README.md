@@ -56,13 +56,7 @@ sudo mkdir /media/raid
 sudo chown pi:pi /media/raid
 sudo mount /dev/md0 /media/raid
 ```
-14. Mount `/root` and rsync it.
-```
-sudo mkdir /mnt/sdrootfs
-sudo mount /dev/mmcblk0p2 /mnt/sdrootfs
-sudo rsync -axv /mnt/sdrootfs/* /media/raid
-```
-15. Get RAID info
+14. Get RAID info
 ```
 sudo mdadm --detail --scan
 ```
@@ -70,11 +64,11 @@ In my case:
 ```
 ARRAY /dev/md0 metadata=1.2 name=hostingpi:0 UUID=058a256d:8df46518:a77ba291:8638152e
 ```
-16. Copy the exact output at the bottom of the config file
+15. Copy the exact output at the bottom of the config file
 ```
 sudo nano /etc/mdadm/mdadm.conf
 ```
-17. Add modules to bootloader 
+16. Add modules to bootloader 
 ```
 sudo nano /etc/initramfs-tools/modules
 ```
@@ -82,6 +76,12 @@ sudo nano /etc/initramfs-tools/modules
 raid1
 md_mod
 ext4
+```
+17. Mount `/root` and rsync it.
+```
+sudo mkdir /mnt/sdrootfs
+sudo mount /dev/mmcblk0p2 /mnt/sdrootfs
+sudo rsync -axv /mnt/sdrootfs/* /media/raid
 ```
 18. Update initramfs
 ```
