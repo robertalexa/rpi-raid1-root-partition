@@ -79,9 +79,9 @@ raid1
 md_mod
 ext4
 ```
-18. Update initramfs and make a note of the output. You will need this in the next step
+18. Update initramfs
 ```
-sudo update-initramfs -c -k `uname -r`
+sudo mkinitramfs -o /boot/initramfs-raid.gz
 ```
 19. Add information about the kernel and initramfs to the boot config
 ```
@@ -89,10 +89,9 @@ sudo nano /boot/config.txt
 ```
 ```
 kernel=kernel8.img
-initramfs initrd.img-5.10.52-v8+ followkernel
+initramfs initramfs-raid.gz followkernel
 ```
-Check your version of the kernel in `/boot`. In my case it was called `kernel8.img`
-For initramds use the version from the output at step 17.
+Check your version of the kernel in `/boot`. In my case (rpi 4 x64) it was called `kernel8.img`
 
 20. `sudo reboot`
 21. Edit boot cmdline
