@@ -66,6 +66,10 @@ sudo rsync -axv /mnt/sdrootfs/* /media/raid
 ```
 sudo mdadm --detail --scan
 ```
+In my case:
+```
+ARRAY /dev/md0 metadata=1.2 name=hostingpi:0 UUID=058a256d:8df46518:a77ba291:8638152e
+```
 16. Copy the exact output at the bottom of the config file
 ```
 sudo nano /etc/mdadm/mdadm.conf
