@@ -50,7 +50,7 @@ watch -n 3 cat /proc/mdstat
 ```
 sudo mkfs.ext4 /dev/md0
 ```
-13. Mount the array to a temporary location. Give the pi user permission.
+13. Mount the array to a temporary location. Give user `pi` ownership of the location.
 ```
 sudo mkdir /media/raid
 sudo chown pi:pi /media/raid
