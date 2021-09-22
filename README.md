@@ -122,12 +122,23 @@ sudo nano /media/raid/etc/fstab
 
 ## Important
 ### Kernel Updates
-In whenever a kernel updates happens, an intervention to update the bootloader is needed. You can check `/lib/modules` for the latest installd version. This will be different from `uname -r` if indeed there was an update applied. Failing to update this will render your system unusable.
+Whenever a kernel update happens, an intervention to update the initramfs is needed. You can check `ls -la /lib/modules` for the latest installed version. This will be different from `uname -r` if indeed there was an update applied. Failing to update this will render your system unusable. Do not reboot without fixing this!!!
 ```
-sudo update-initramfs -c -k new-version
+sudo mkinitramfs -o /boot/initramfs-raid.gz new-version
 ```
 
-An alternative is to create a custom script that hooks into the kernel update process. TODO
+An alternative is to create a custom script that hooks into the kernel update process. Create a new file `/etc/kernel/postinst.d/raid-update` with the following content. Make sure to use the correct kernel name based on your device and architecture (kernel8 in my case). The script will be passed the installed kernel version as the first parameter thus creating the correct image.
+```
+#!/bin/bash
+if [ "x$2" != "x/boot/kernel8.img" ]; then
+	exit 0
+fi
+
+echo ============ UPDATE INITRAMFS ==============
+mkinitramfs -o /boot/initramfs-raid.gz $1
+echo ============ UPDATE COMPLETED ==============
+```
+
 
 ## Enjoy!
 
@@ -137,3 +148,5 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=314453&p=1881821&hilit=r
 https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=306729&p=1834954&hilit=raid+1+root
 
 https://jlamoure.net/blog/raspberry-pi-raid-1/
+
+https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=319427
