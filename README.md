@@ -46,7 +46,7 @@ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda1 /dev
 ```
 watch -n 3 cat /proc/mdstat
 ```
-12. Format the array
+12. Format the array. This is technically redundant as the 2 drives are already `ext4`. But better to do it to be sure. Won't take long.
 ```
 sudo mkfs.ext4 /dev/md0
 ```
