@@ -93,7 +93,7 @@ sudo nano /boot/config.txt
 ```
 ```
 kernel=kernel8.img
-initramfs initramfs-raid.gz followkernel
+initramfs initramfs-raid.gz
 ```
 Check your version of the kernel in `/boot`. In my case (rpi 4 x64) it was called `kernel8.img`
 
