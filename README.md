@@ -115,6 +115,15 @@ sudo nano /media/raid/etc/fstab
 25. `sudo rm -rf /media/raid`
 26. OPTIONAL but recommended step. Power off your RPi, plug your MicroSD into your laptop and delete the old `/root` partition.
 
+## Important
+### Kernel Updates
+In whenever a kernel updates happens, an intervention to update the bootloader is needed. You can check `/lib/modules` for the latest installd version. This will be different from `uname -r` if indeed there was an update applied. Failing to update this will render your system unusable.
+```
+sudo update-initramfs -c -k new-version
+```
+
+An alternative is to create a custom script that hooks into the kernel update process. TODO
+
 ## Enjoy!
 
 ## Source
