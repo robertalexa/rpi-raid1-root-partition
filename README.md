@@ -160,3 +160,6 @@ https://jlamoure.net/blog/raspberry-pi-raid-1/
 Similar setup - automatic script to regenerate initramfs
 
 https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=319427
+
+Thread where the challenges of this process have been overcome
+https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=320003&p=1916845#p1916845
