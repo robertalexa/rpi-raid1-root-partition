@@ -145,10 +145,18 @@ sudo chmod 755 /etc/kernel/postinst.d/raid-update
 ## Enjoy!
 
 ## Source
-https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=314453&p=1881821&hilit=raid+1+root
+Original inspiration guide
 
 https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=306729&p=1834954&hilit=raid+1+root
 
+Useful comments
+
+https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=314453&p=1881821&hilit=raid+1+root
+
+Generic raid array setup
+
 https://jlamoure.net/blog/raspberry-pi-raid-1/
+
+Similar setup - automatic script to regenerate initramfs
 
 https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=319427
