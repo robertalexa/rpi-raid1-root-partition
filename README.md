@@ -79,9 +79,9 @@ ext4
 ```
 17. Mount `/root` and rsync it.
 ```
-sudo mkdir /mnt/sdrootfs
-sudo mount /dev/mmcblk0p2 /mnt/sdrootfs
-sudo rsync -axv /mnt/sdrootfs/* /media/raid
+sudo mkdir /media/sdrootfs
+sudo mount /dev/mmcblk0p2 /media/sdrootfs
+sudo rsync -axv /media/sdrootfs/* /media/raid
 ```
 18. Update initramfs
 ```
