@@ -62,7 +62,7 @@ sudo mdadm --detail --scan
 ```
 In my case:
 ```
-ARRAY /dev/md0 metadata=1.2 name=hostingpi:0 UUID=058a256d:8df46518:a77ba291:8638152e
+ARRAY /dev/md0 metadata=1.2 name=hostingpi:0 UUID=152ceb27:2de4e2cf:de8f3fe2:7ae0e609
 ```
 15. Copy the exact output at the bottom of the config file
 ```
